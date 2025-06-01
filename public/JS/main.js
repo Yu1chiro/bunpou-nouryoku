@@ -3,7 +3,7 @@
         function openModal(level) {
             selectedJLPTLevel = level;
             document.getElementById('selectedLevel').value = level;
-            document.getElementById('modalTitle').textContent = `Pengaturan Latihan JLPT ${level}`;
+            document.getElementById('modalTitle').textContent = `Settings Question ${level}`;
             document.getElementById('settingsModal').classList.remove('hidden');
             document.getElementById('settingsModal').classList.add('flex');
             document.getElementById('modalContent').classList.remove('scale-95');
