@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Renshuu - Latihan Soal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#10B981'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
+    <!-- Header -->
+    <header class="bg-white shadow-lg">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                       <button onclick="goHome()" class="text-gray-600 hover:text-gray-800 font-medium">
+                        ← Kembali
+                    </button>
+                      <div class="w-[100px] h-auto bg-gradient-to-r from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center">
+                    <span class="text-white font-bold text-xl">練習</span>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="bg-blue-100 px-4 py-2 rounded-lg">
+                        <span class="text-blue-800 font-semibold" id="progressText">1/20</span>
+                    </div>
+                    <!--  -->
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Progress Bar -->
+    <div class="bg-white border-b">
+        <div class="container mx-auto px-6 py-3">
+            <div class="w-full bg-gray-200 rounded-full h-3">
+                <div class="bg-gradient-to-r from-blue-500 to-indigo-600 h-3 rounded-full transition-all duration-500 ease-out" 
+                     id="progressBar" style="width: 5%"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="fixed inset-0 bg-white z-50 flex items-center justify-center">
+        <div class="text-center">
+            <div class="animate-spin rounded-full h-16 w-16 border-b-4 border-blue-500 mx-auto mb-4"></div>
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">Memuat Soal...</h3>
+            <p class="text-gray-600">Sedang menyiapkan latihan untuk Anda</p>
+        </div>
+    </div>
+
+    <!-- Quiz Container -->
+    <main class="container mx-auto px-6 py-8" id="quizContainer" style="display: none;">
+        <div class="max-w-4xl mx-auto">
+            <!-- Question Card -->
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+                <div class="flex items-center justify-between mb-6">
+                    <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full font-medium" id="questionNumber">
+                        Soal 1
+                    </span>
+                    <div class="flex items-center space-x-4 text-sm text-gray-500">
+                        <span id="quizLevel">JLPT N5</span>
+                        <span>•</span>
+                        <span id="quizType">Basic</span>
+                    </div>
+                </div>
+
+                <div class="mb-8">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4 leading-relaxed" id="questionText">
+                        Loading question...
+                    </h2>
+                </div>
+
+                <!-- Answer Options -->
+                <div class="space-y-4" id="answerOptions">
+                    <!-- Options will be populated by JavaScript -->
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="flex justify-between mt-8 pt-6 border-t">
+                    <button id="prevBtn" onclick="previousQuestion()" 
+                            class="px-6 py-3 border border-gray-300 text-gray-600 rounded-lg hover:bg-gray-50 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                            disabled>
+                        ← Sebelumnya
+                    </button>
+                    <button id="nextBtn" onclick="nextQuestion()" 
+                            class="px-6 py-3 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-lg hover:shadow-lg transform hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                            disabled>
+                        Selanjutnya →
+                    </button>
+                    <button id="finishBtn" onclick="finishQuiz()" 
+                            class="px-6 py-3 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-lg hover:shadow-lg transform hover:scale-105 transition-all duration-200 hidden">
+                        Selesai
+                    </button>
+                </div>
+            </div>
+
+            <!-- Answer Summary (Hidden initially) -->
+            <div class="bg-white rounded-xl shadow-lg p-6 hidden" id="answerSummary">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">Ringkasan Jawaban</h3>
+                <div class="grid grid-cols-10 gap-2" id="answerGrid">
+                    <!-- Answer summary will be populated by JavaScript -->
+                </div>
+                <div class="mt-4 text-sm text-gray-600">
+                    <span class="inline-block w-4 h-4 bg-green-500 rounded mr-2"></span>Terjawab
+                    <span class="inline-block w-4 h-4 bg-gray-300 rounded mr-2 ml-4"></span>Belum dijawab
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Results Modal -->
+    <div id="resultsModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-xl shadow-2xl max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div class="p-8">
+                <!-- Results Header -->
+                <div class="text-center mb-8">
+                    <div class="w-20 h-20 mx-auto mb-4 rounded-full flex items-center justify-center" id="scoreIcon">
+                        <span class="text-4xl">🎯</span>
+                    </div>
+                    <h3 class="text-3xl font-bold text-gray-800 mb-2">Hasil Latihan</h3>
+                    <div class="flex items-center justify-center space-x-6 text-lg">
+                        <span class="text-gray-600">Skor: <span class="font-bold text-blue-600" id="finalScore">0%</span></span>
+                        <span class="text-gray-600">Benar: <span class="font-bold text-green-600" id="correctCount">0</span>/20</span>
+                    </div>
+                </div>
+
+                <!-- AI Evaluation -->
+                <div class="bg-blue-50 rounded-lg p-6 mb-8">
+                    <h4 class="text-lg font-semibold text-blue-800 mb-3 flex items-center">
+                        <span class="mr-2">🤖</span>Evaluasi AI
+                    </h4>
+                    <div class="text-blue-700 leading-relaxed" id="aiEvaluation">
+                        Memuat evaluasi...
+                    </div>
+                </div>
+
+                <!-- Detailed Results -->
+                <div class="mb-8">
+                    <h4 class="text-lg font-semibold text-gray-800 mb-4">Detail Jawaban</h4>
+                    <div class="space-y-4 max-h-60 overflow-y-auto" id="detailedResults">
+                        <!-- Detailed results will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button onclick="goHome()" 
+                            class="px-8 py-3 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-lg hover:shadow-lg transform hover:scale-105 transition-all duration-200">
+                        Kembali ke Beranda
+                    </button>
+                    <button onclick="retryQuiz()" 
+                            class="px-8 py-3 border-2 border-blue-500 text-blue-500 rounded-lg hover:bg-blue-50 transition-all duration-200">
+                        Coba Lagi
+                    </button>
+                    <button onclick="shareResults()" 
+                            class="px-8 py-3 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-lg hover:shadow-lg transform hover:scale-105 transition-all duration-200">
+                        Bagikan Hasil
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  <script src="/JS/call.js"></script>
+</body>
+</html>

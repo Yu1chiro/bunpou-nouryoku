@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文法能力 | Yuii</title>
+    <link rel="shortcut icon" href="ico.png" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#10B981'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
+    <!-- Header -->
+    <header class="bg-white shadow-lg">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-center">
+                <div class="flex items-center space-x-3">
+                    <div class="w-[150px] h-auto bg-gradient-to-r py-2 px-2 from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center">
+                    <span class="text-white font-bold text-xl">Geminian</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="container mx-auto px-6 py-16">
+       <div class="text-center mb-16">
+    <img src="ico.png" alt="Deskripsi Gambar" class="mx-auto mb-5 w-full max-w-md" />
+    <h1 class="text-gray-600 bg-clip-text text-transparent text-3xl bg-gradient-to-r from-blue-400 to-blue-600 font-extrabold mb-8">文法能力へようこそ！</h1>
+    
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <button class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-8 py-3 rounded-lg font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-200">
+            Mulai Belajar
+        </button>
+        <button data-target="static-view" class="border-2 border-blue-500 text-blue-500 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-all duration-200">
+            Lihat Statistik
+        </button>
+    </div>
+</div>
+
+
+        <!-- JLPT Level Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+            <!-- Card JLPT N5 -->
+            <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer group" onclick="openModal('N5')">
+                <div class="p-6">
+                    <div class="w-16 h-16 bg-gradient-to-r from-green-400 to-green-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <span class="text-white font-bold text-2xl">N5</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">JLPT N5</h3>
+                    <p class="text-gray-600 mb-4">Level dasar untuk pemula. Tata bahasa sederhana dan kosakata sehari-hari.</p>
+                    <div class="flex items-center justify-between text-sm text-gray-500">
+                        <span>📚 ~80 Kanji</span>
+                        <span>⏱️ 20 Soal</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card JLPT N4 -->
+            <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer group" onclick="openModal('N4')">
+                <div class="p-6">
+                    <div class="w-16 h-16 bg-gradient-to-r from-blue-400 to-blue-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <span class="text-white font-bold text-2xl">N4</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">JLPT N4</h3>
+                    <p class="text-gray-600 mb-4">Level menengah bawah. Tata bahasa lebih kompleks dan kosakata diperluas.</p>
+                    <div class="flex items-center justify-between text-sm text-gray-500">
+                        <span>📚 ~300 Kanji</span>
+                        <span>⏱️ 20 Soal</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card JLPT N3 -->
+            <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer group" onclick="openModal('N3')">
+                <div class="p-6">
+                    <div class="w-16 h-16 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <span class="text-white font-bold text-2xl">N3</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">JLPT N3</h3>
+                    <p class="text-gray-600 mb-4">Level menengah. Tata bahasa kompleks untuk kehidupan sehari-hari.</p>
+                    <div class="flex items-center justify-between text-sm text-gray-500">
+                        <span>📚 ~650 Kanji</span>
+                        <span>⏱️ 20 Soal</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card JLPT N2 -->
+            <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer group" onclick="openModal('N2')">
+                <div class="p-6">
+                    <div class="w-16 h-16 bg-gradient-to-r from-purple-400 to-purple-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <span class="text-white font-bold text-2xl">N2</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">JLPT N2</h3>
+                    <p class="text-gray-600 mb-4">Level menengah atas. Tata bahasa untuk situasi formal dan akademis.</p>
+                    <div class="flex items-center justify-between text-sm text-gray-500">
+                        <span>📚 ~1000 Kanji</span>
+                        <span>⏱️ 20 Soal</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card JLPT N1 -->
+            <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer group col-span-1 md:col-span-2 lg:col-span-4" onclick="openModal('N1')">
+                <div class="p-6">
+                    <div class="flex items-center justify-center mb-4">
+                        <div class="w-20 h-20 bg-gradient-to-r from-red-500 to-pink-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <span class="text-white font-bold text-3xl">N1</span>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">JLPT N1</h3>
+                        <p class="text-gray-600 mb-4">Level tertinggi. Tata bahasa kompleks untuk situasi profesional dan akademis tingkat tinggi.</p>
+                        <div class="flex items-center justify-center space-x-8 text-sm text-gray-500">
+                            <span>📚 2000+ Kanji</span>
+                            <span>⏱️ 20 Soal</span>
+                            <span>🎯 Tingkat Mahir</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Settings -->
+    <div id="settingsModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-xl shadow-2xl max-w-md w-full mx-4 transform transition-all duration-300 scale-95" id="modalContent">
+            <div class="p-6">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="text-2xl font-bold text-gray-800" id="modalTitle">Settings Question</h3>
+                    <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600 text-2xl">&times;</button>
+                </div>
+
+            <form id="settingsForm" class="space-y-6">
+  <input type="hidden" id="selectedLevel" name="jlptLevel">
+
+  <!-- Container Grid Layout (2 kolom di desktop, 1 kolom di mobile) -->
+  <div class="grid gap-6 md:grid-cols-2">
+
+    <!-- Difficulty Level -->
+    <div>
+      <label class="block text-sm font-semibold text-gray-700 mb-3">Tingkat Kesulitan</label>
+      <div class="space-y-2">
+        <label class="flex items-center p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+          <input type="radio" name="difficulty" value="easy" class="text-blue-500 mr-3" checked>
+          <div>
+            <div class="font-medium text-gray-800">Mudah</div>
+            <div class="text-sm text-gray-500">Tata bahasa dasar dengan kosakata sederhana</div>
+          </div>
+        </label>
+        <label class="flex items-center p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+          <input type="radio" name="difficulty" value="medium" class="text-blue-500 mr-3">
+          <div>
+            <div class="font-medium text-gray-800">Menengah</div>
+            <div class="text-sm text-gray-500">Variasi tata bahasa dengan konteks beragam</div>
+          </div>
+        </label>
+        <label class="flex items-center p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+          <input type="radio" name="difficulty" value="advanced" class="text-blue-500 mr-3">
+          <div>
+            <div class="font-medium text-gray-800">Sulit</div>
+            <div class="text-sm text-gray-500">Tata bahasa kompleks dan nuansa halus</div>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <!-- Question Type -->
+    <div>
+      <label class="block text-sm font-semibold text-gray-700 mb-3">Kategori Soal</label>
+      <div class="space-y-2">
+        <label class="flex items-center p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+          <input type="radio" name="questionType" value="basic" class="text-blue-500 mr-3" checked>
+          <div>
+            <div class="font-medium text-gray-800">Basic</div>
+            <div class="text-sm text-gray-500">Soal pilihan ganda tentang arti dan penggunaan</div>
+          </div>
+        </label>
+        <label class="flex items-center p-3 border rounded-lg hover:bg-gray-50 cursor-pointer">
+          <input type="radio" name="questionType" value="fill" class="text-blue-500 mr-3">
+          <div>
+            <div class="font-medium text-gray-800">Fill in the Blank</div>
+            <div class="text-sm text-gray-500">Soal isi titik-titik dengan pilihan jawaban</div>
+          </div>
+        </label>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Submit Button -->
+  <div class="pt-4">
+    <button type="submit" class="w-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white py-3 rounded-lg font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-200 flex items-center justify-center">
+      <span id="submitText">Mulai Latihan</span>
+      <div id="loadingSpinner" class="hidden ml-3">
+        <div class="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+      </div>
+    </button>
+  </div>
+</form>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Statistics Section -->
+    <section class="container mx-auto px-6 py-16">
+        <div class="text-center mb-12">
+            <h3 class="text-3xl font-bold text-gray-800 mb-4">Statistik Belajar Anda</h3>
+            <p class="text-gray-600">Pantau progress belajar tata bahasa Jepang Anda</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto" id="statsContainer">
+            <div id="static-view" class="bg-white rounded-xl shadow-lg p-6 text-center">
+                <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span class="text-2xl">📊</span>
+                </div>
+                <h4 class="text-xl font-bold text-gray-800 mb-2">Total Latihan</h4>
+                <p class="text-3xl font-bold text-blue-600" id="totalQuizzes">0</p>
+                <p class="text-gray-500 text-sm">Kuis diselesaikan</p>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span class="text-2xl">🎯</span>
+                </div>
+                <h4 class="text-xl font-bold text-gray-800 mb-2">Rata-rata Skor</h4>
+                <p class="text-3xl font-bold text-green-600" id="averageScore">0%</p>
+                <p class="text-gray-500 text-sm">Performa keseluruhan</p>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+                <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span class="text-2xl">🏆</span>
+                </div>
+                <h4 class="text-xl font-bold text-gray-800 mb-2">Skor Tertinggi</h4>
+                <p class="text-3xl font-bold text-purple-600" id="bestScore">0%</p>
+                <p class="text-gray-500 text-sm">Pencapaian terbaik</p>
+            </div>
+        </div>
+    </section>
+<footer class="fixed bottom-0 left-0 w-full  text-gray-500 text-center py-3 text-sm shadow-md z-50">
+  &copy; 文法能力 ２０２５ | Yuii 
+</footer>
+
+  <script src="/JS/main.js"></script>
+</body>
+</html>
